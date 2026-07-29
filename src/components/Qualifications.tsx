@@ -1,86 +1,135 @@
-import React from "react";
-
-interface TimelineItemProps {
-  title: string;
-  subtitle: string;
-  isLeft: boolean;
-}
-
-const TimelineItem: React.FC<TimelineItemProps> = ({
-  title,
-  subtitle,
-  isLeft,
-}) => {
-  return (
-    <div className="flex w-full my-4 items-center justify-center">
-      {/* Left Box Container */}
-      <div
-        className={`w-5/12 px-4 ${isLeft ? "text-right" : "text-left order-last"}`}
-      >
-        {isLeft && (
-          <div>
-            <h4 className="font-semibold text-sm sm:text-base text-white">
-              {title}
-            </h4>
-            <p className="text-xs text-gray-400 mt-1">{subtitle}</p>
-          </div>
-        )}
-      </div>
-
-      {/* Center Bullet Tracker Node */}
-      <div className="w-2/12 flex justify-center relative">
-        <div className="w-3 h-3 bg-purple-600 rounded-full z-10 border-2 border-[#0d0c15]" />
-      </div>
-
-      {/* Right Box Container */}
-      <div className={`w-5/12 px-4 ${!isLeft ? "text-left" : "text-right"}`}>
-        {!isLeft && (
-          <div>
-            <h4 className="font-semibold text-sm sm:text-base text-white">
-              {title}
-            </h4>
-            <p className="text-xs text-gray-400 mt-1">{subtitle}</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
+import React, { useState } from "react";
+import { FaBriefcase } from "react-icons/fa";
+import { FaGraduationCap } from "react-icons/fa6";
 
 const Qualifications: React.FC = () => {
+  const [activeTab, setActiveTab] = useState("education");
+
+  const education = [
+    {
+      title: "Master of International Software Systems Science",
+      organization: "University of Bamberg",
+      duration: "2024 - 2026",
+      description:
+        "Specialized in Software Systems, AI, Distributed Systems and Cloud Computing.",
+    },
+    {
+      title: "Bachelor of Computer Science",
+      organization: "FAST NUCES",
+      duration: "2019 - 2023",
+      description:
+        "Focused on Software Engineering, Algorithms, Databases and Web Development.",
+    },
+  ];
+
+  const work = [
+    {
+      title: "Software Engineer",
+      organization: "Bosch",
+      duration: "2025 - Present",
+      description:
+        "Developing logistics optimization software, Angular applications, route planning, and real-time tracking systems.",
+    },
+    {
+      title: "Software Engineer",
+      organization: "ByteCorp",
+      duration: "2022 - 2024",
+      description:
+        "Built scalable React and Node.js applications with REST APIs and SQL databases.",
+    },
+    {
+      title: "Frontend Developer",
+      organization: "MarketPlug",
+      duration: "2021",
+      description:
+        "Developed responsive React interfaces and reusable UI components.",
+    },
+  ];
+
+  const timeline = activeTab === "education" ? education : work;
+
   return (
-    <div className="py-4 space-y-12">
-      <div className="text-center space-y-2">
+    <section className="py-20">
+      {/* Heading */}
+
+      <div className="text-center mb-12 space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Qualifications</h2>
+
         <p className="text-xs text-purple-400 tracking-widest uppercase">
-          My personal journey
+          My Personal Journey
         </p>
       </div>
 
-      {/* Centralized Timeline Tree */}
-      <div className="relative max-w-2xl mx-auto">
-        {/* Core Vertical Timeline Strip Bar Accent */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-purple-600/40 top-2" />
+      {/* Tabs */}
 
-        <div className="space-y-8">
-          <TimelineItem
-            title="Computer Science"
-            subtitle="University / 2021 - Present"
-            isLeft={true}
-          />
-          <TimelineItem
-            title="High School"
-            subtitle="Academy City / 2018 - 2021"
-            isLeft={false}
-          />
-          <TimelineItem
-            title="Matriculation"
-            subtitle="School Institute / 2016 - 2018"
-            isLeft={true}
-          />
+      <div className="flex justify-center gap-4 mb-14">
+        <button
+          onClick={() => setActiveTab("education")}
+          className={`flex items-center gap-2 rounded-full px-6 py-3 transition-all duration-300 ${
+            activeTab === "education"
+              ? "bg-purple-600 text-white shadow-lg shadow-purple-600/30"
+              : "bg-[#151421] text-zinc-400 hover:bg-zinc-800"
+          }`}
+        >
+          <FaGraduationCap size={22} />
+          Education
+        </button>
+
+        <button
+          onClick={() => setActiveTab("work")}
+          className={`flex items-center gap-2 rounded-full px-6 py-3 transition-all duration-300 ${
+            activeTab === "work"
+              ? "bg-purple-600 text-white shadow-lg shadow-purple-600/30"
+              : "bg-[#151421] text-zinc-400 hover:bg-zinc-800"
+          }`}
+        >
+          <FaBriefcase size={18} />
+          Work
+        </button>
+      </div>
+
+      {/* Timeline */}
+
+      <div className="relative max-w-3xl mx-auto">
+        {/* Vertical Line */}
+
+        <div className="absolute left-5 top-0 h-full w-[2px] bg-gradient-to-b from-purple-500 via-purple-600 to-purple-800 opacity-50" />
+
+        <div className="space-y-10">
+          {timeline.map((item, index) => (
+            <div key={index} className="relative pl-16">
+              {/* Timeline Dot */}
+
+              <div className="absolute left-0 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-purple-600 ring-4 ring-zinc-950 shadow-lg shadow-purple-500/40">
+                {activeTab === "education" ? (
+                  <FaGraduationCap size={22} />
+                ) : (
+                  <FaBriefcase size={18} />
+                )}
+              </div>
+
+              {/* Card */}
+
+              <div className="rounded-2xl border border-purple-500/20 bg-[#151421]/70 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-500/10">
+                <p className="text-sm uppercase tracking-widest text-purple-400">
+                  {item.duration}
+                </p>
+
+                <h3 className="mt-2 text-2xl font-semibold text-white">
+                  {item.title}
+                </h3>
+
+                <p className="mt-1 text-zinc-400">{item.organization}</p>
+
+                <p className="mt-4 text-sm leading-7 text-zinc-500">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

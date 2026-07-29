@@ -29,7 +29,7 @@ const projects: Project[] = [
 
 const Portfolio: React.FC = () => {
   return (
-    <div className="space-y-10 py-6">
+    <div className="space-y-10 py-20">
       <div className="text-center space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Portfolio</h2>
         <p className="text-xs text-purple-400 tracking-widest uppercase">
@@ -41,7 +41,7 @@ const Portfolio: React.FC = () => {
         {projects.map((project, idx) => (
           <div
             key={idx}
-            className="bg-[#151421] rounded-2xl overflow-hidden border border-gray-800/40 hover:border-purple-500/30 transition-all flex flex-col group"
+            className="hover:cursor-pointer bg-[#151421] rounded-2xl overflow-hidden border border-gray-800/40 transition-all flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-500/10"
           >
             <div className="aspect-video bg-gray-900 overflow-hidden relative">
               <img

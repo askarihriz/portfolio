@@ -2,6 +2,7 @@ import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
+import Typewriter from "typewriter-effect";
 
 const Hero: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -56,7 +57,13 @@ const Hero: React.FC = () => {
           Hi, I'm Askari
         </h1>
         <p className="text-2xl font-medium text-purple-400">
-          Software Engineer
+          <Typewriter
+            options={{
+              strings: ["Software Engineer", "Full Stack Developer"],
+              autoStart: true,
+              loop: true,
+            }}
+          />
         </p>
         <p className="text-gray-400 max-w-xl leading-relaxed text-sm sm:text-lg">
           High level experience in web design and development knowledge,
