@@ -3,6 +3,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
+import ProfilePicture from "../assets/profile-picture.png";
 
 const Hero: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -81,7 +82,7 @@ const Hero: React.FC = () => {
       <div className="md:col-span-4 flex justify-center relative">
         <div className="relative w-75 h-75 sm:w-72 sm:h-72 rounded-[40%_60%_70%_40%_/_40%_50%_60%_60%] bg-purple-600 overflow-hidden shadow-2xl shadow-purple-500/10 border-none">
           <img
-            src="src/assets/profile-picture.png"
+            src={ProfilePicture}
             alt="Askari's Picture"
             className="w-full h-full object-scale-down scale-140 mt-6"
           />

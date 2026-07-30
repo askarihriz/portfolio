@@ -1,4 +1,13 @@
 import React from "react";
+import TaasImage from "../assets/portfolio-images/TaaS.png";
+import DriverAppImage from "../assets/portfolio-images/driver-app.png";
+import PritchardSalesPortalImage from "../assets/portfolio-images/pritchard-sales-portal.png";
+import CommercialEVsPlatformImage from "../assets/portfolio-images/commercial-ev.png";
+import AlefDigitalImage from "../assets/portfolio-images/alef-digital.png";
+import VirtualBankingAppImage from "../assets/portfolio-images/virtual-banking-app.png";
+import DuckShooterImage from "../assets/portfolio-images/duck-shooter.png";
+import FlappyBirdImage from "../assets/portfolio-images/flappy-bird.png";
+import DartManiaImage from "../assets/portfolio-images/dart-game.png";
 
 interface Project {
   title: string;
@@ -12,63 +21,63 @@ const projects: Project[] = [
     title: "TaaS - Transport as a Service",
     description:
       "Bosch's TaaS, a logistics solution for managing and optimizing transportation services, providing real-time tracking and analytics.",
-    image: "src/assets/portfolio-images/TaaS.png",
+    image: TaasImage,
     link: "https://www.bosch.de/unternehmen/bosch-in-deutschland/bamberg/",
   },
   {
     title: "Driver App",
     description:
       "Bosch's Driver App, a solution for managing and tracking deliveries, providing real-time updates and navigation assistance for drivers.",
-    image: "src/assets/portfolio-images/driver-app.png",
+    image: DriverAppImage,
     link: "https://www.bosch.de/unternehmen/bosch-in-deutschland/bamberg/",
   },
   {
     title: "Pritchard Sales Portal",
     description:
       "ByteCorp's Pritchard Sales Portal, a platform for managing sales operations, tracking leads, and analyzing performance metrics.",
-    image: "src/assets/portfolio-images/pritchard-sales-portal.png",
+    image: PritchardSalesPortalImage,
     link: "https://www.bytecorp.io/en",
   },
   {
     title: "Commercial EVs Platform",
     description:
       "ByteCorp's Commercial EVs platform, a solution for managing and monitoring electric vehicles in a commercial fleet.",
-    image: "src/assets/portfolio-images/commercial-ev.png",
+    image: CommercialEVsPlatformImage,
     link: "https://www.bytecorp.io/en",
   },
   {
     title: "Alef Digital",
     description:
       "Fully responsive, smooth-scrolling architectural dashboard optimized heavily for enterprise metrics layout.",
-    image: "src/assets/portfolio-images/alef-digital.png",
+    image: AlefDigitalImage,
     link: "https://www.bytecorp.io/en",
   },
   {
     title: "Dolla - Virtual Bank",
     description:
       "React Website with smooth scroll, adaptable to all devices with ui components and animated interactions.",
-    image: "src/assets/portfolio-images/virtual-banking-app.png",
+    image: VirtualBankingAppImage,
     link: "https://github.com/askarihriz/virtual-banking-app",
   },
   {
     title: "Duck Shooter in C++",
     description:
       "First person duck shooting game inspired by old retro graphics from PlayStation 1, created using my own 2D GameEngine.",
-    image: "src/assets/portfolio-images/duck-shooter.png",
+    image: DuckShooterImage,
     link: "https://github.com/askarihriz/duck-shooter",
   },
   {
     title: "Flappy Bird in C++",
     description:
       "Good old Flappy Bird recreated using SDL2 Framework and C++, revised with an AI such that the game play by itself infinitly.",
-    image: "src/assets/portfolio-images/flappy-bird.png",
+    image: FlappyBirdImage,
     link: "https://github.com/askarihriz/2d-game-engine-with-flappy-bird",
   },
   {
     title: "Dart Mania in C++",
     description:
       "Fun arcade game, recreation of real life carnival dart game. Simple, straight forward, 2D made using SDL2 library and C++.",
-    image: "src/assets/portfolio-images/dart-game.png",
+    image: DartManiaImage,
     link: "https://github.com/askarihriz/carnival-dart-game",
   },
 ];

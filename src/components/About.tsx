@@ -1,5 +1,6 @@
 import React from "react";
 import { IoMdDownload } from "react-icons/io";
+import ResumeMockup from "../assets/resume-mock.jpg";
 
 const About: React.FC = () => {
   const viewResume = async () => {
@@ -40,7 +41,7 @@ const About: React.FC = () => {
         className="hover:cursor-pointer max-w-[225px] mx-auto border border-gray-800/60 rounded-2xl overflow-hidden shadow-xl bg-[#151421] p-2 space-y-4 hover:border-purple-500/30 shadow-2xl shadow-purple-500/10 hover:-translate-y-0.5 transition-all"
       >
         <img
-          src="src/assets/resume-mock.jpg"
+          src={ResumeMockup}
           alt="Resume Showcase Mockup"
           className="w-full h-auto rounded-xl"
         />
