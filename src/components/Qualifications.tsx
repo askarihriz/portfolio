@@ -2,47 +2,65 @@ import React, { useState } from "react";
 import { FaBriefcase } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa6";
 
-const Qualifications: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("education");
+type QualificationItem = {
+  title: string;
+  organization: string;
+  duration: string;
+  description?: string;
+  bulletPoints?: string[];
+};
 
-  const education = [
+const Qualifications: React.FC = () => {
+  const [activeTab, setActiveTab] = useState("work");
+
+  const education: QualificationItem[] = [
     {
-      title: "Master of International Software Systems Science",
+      title: "Masters in International Software Systems Science",
       organization: "University of Bamberg",
-      duration: "2024 - 2026",
+      duration: "April 2024 - May 2026",
       description:
         "Specialized in Software Systems, AI, Distributed Systems and Cloud Computing.",
     },
     {
-      title: "Bachelor of Computer Science",
+      title: "Bachelors in Computer Science",
       organization: "FAST NUCES",
-      duration: "2019 - 2023",
+      duration: "August 2019 - June 2023",
       description:
         "Focused on Software Engineering, Algorithms, Databases and Web Development.",
     },
   ];
 
-  const work = [
+  const work: QualificationItem[] = [
     {
-      title: "Software Engineer",
+      title: "Working Student Software Engineer",
       organization: "Bosch",
-      duration: "2025 - Present",
-      description:
-        "Developing logistics optimization software, Angular applications, route planning, and real-time tracking systems.",
+      duration: "October 2025 - March 2026",
+      bulletPoints: [
+        `Shipped a real-time order tracking application(Angular + Mapbox) enabling live navigation and delivery visibility within a logistics application used in an operational environment with ~5000 internal users.`,
+        `Created and shipped a distance matrix calculation microservice using(Python + FastAPI + Dijkstra + Google OR-Tools) for internal delivery routing application, extensively used applied AI(Copilot).`,
+        `Implemented a robust Axios Interceptor with retry logic, to handle different classes of errors for entire codebase.`,
+        `Migrated CI/CD pipelines from Azure DevOps to GitHub Actions and integrated automated testing.`,
+      ],
+    },
+    {
+      title: "Software Engineer Intern",
+      organization: "Bosch",
+      duration: "April 2025 - October 2025",
+      bulletPoints: [
+        `Shipped a Driver App(Angular 19 + Node.js/TypeScript) by implementing login, delivery tracking, and assignment features in collaboration with UX designers.`,
+        `Supported the OR-Tools Task Force in debugging route optimization logic and documenting fixes.`,
+        `Explored Playwright for automated testing and developed Cypress E2E cases to ensure Driver App stability before production releases.`,
+      ],
     },
     {
       title: "Software Engineer",
       organization: "ByteCorp",
-      duration: "2022 - 2024",
-      description:
-        "Built scalable React and Node.js applications with REST APIs and SQL databases.",
-    },
-    {
-      title: "Frontend Developer",
-      organization: "MarketPlug",
-      duration: "2021",
-      description:
-        "Developed responsive React interfaces and reusable UI components.",
+      duration: "February 2022 - May 2024",
+      bulletPoints: [
+        `Shipped a (React.js + Node.js) Stock Inventory module using ag-grid-react library for SHAED Digital App and maintained it in production.`,
+        `Created and shipped Alef Digital app using applied ML(OCR) for Arabic to English legal documents conversion.`,
+        `Standardized and documented Axios REST APIs to improve maintainability of the codebase.`,
+      ],
     },
   ];
 
@@ -64,18 +82,6 @@ const Qualifications: React.FC = () => {
 
       <div className="flex justify-center gap-4 mb-14">
         <button
-          onClick={() => setActiveTab("education")}
-          className={`flex items-center gap-2 rounded-full px-6 py-3 transition-all duration-300 ${
-            activeTab === "education"
-              ? "bg-purple-600 text-white shadow-lg shadow-purple-600/30"
-              : "bg-[#151421] text-zinc-400 hover:bg-zinc-800"
-          }`}
-        >
-          <FaGraduationCap size={22} />
-          Education
-        </button>
-
-        <button
           onClick={() => setActiveTab("work")}
           className={`flex items-center gap-2 rounded-full px-6 py-3 transition-all duration-300 ${
             activeTab === "work"
@@ -85,6 +91,18 @@ const Qualifications: React.FC = () => {
         >
           <FaBriefcase size={18} />
           Work
+        </button>
+
+        <button
+          onClick={() => setActiveTab("education")}
+          className={`flex items-center gap-2 rounded-full px-6 py-3 transition-all duration-300 ${
+            activeTab === "education"
+              ? "bg-purple-600 text-white shadow-lg shadow-purple-600/30"
+              : "bg-[#151421] text-zinc-400 hover:bg-zinc-800"
+          }`}
+        >
+          <FaGraduationCap size={22} />
+          Education
         </button>
       </div>
 
@@ -115,15 +133,24 @@ const Qualifications: React.FC = () => {
                   {item.duration}
                 </p>
 
-                <h3 className="mt-2 text-2xl font-semibold text-white">
+                <h3 className="mt-2 text-xl font-semibold text-white">
                   {item.title}
                 </h3>
 
                 <p className="mt-1 text-zinc-400">{item.organization}</p>
-
-                <p className="mt-4 text-sm leading-7 text-zinc-500">
-                  {item.description}
-                </p>
+                {item.bulletPoints ? (
+                  <ul className="mt-4 list-disc list-outside pl-5 space-y-3 text-sm leading-6 text-zinc-400">
+                    {item.bulletPoints.map((point, idx) => (
+                      <li key={idx} className="pl-1">
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-4 text-sm leading-7 text-zinc-500">
+                    {item.description}
+                  </p>
+                )}
               </div>
             </div>
           ))}
